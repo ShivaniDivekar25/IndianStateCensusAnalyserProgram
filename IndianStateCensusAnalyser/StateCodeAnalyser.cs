@@ -20,6 +20,12 @@ namespace IndianStateCensusAnalyser
             {
                 throw new IndianStateCensusException(IndianStateCensusException.IndianStateExceptionType.CODE_FILE_TYPE_INCORRECT, "Incorrect state code file type");
             }
+            var csvReader = File.ReadAllLines(filePath);
+            string header = csvReader[0];
+            if (header.Contains("/"))
+            {
+                throw new IndianStateCensusException(IndianStateCensusException.IndianStateExceptionType.CODE_INCORRECT_DELIMETER, "Incorrect state code delimeter");
+            }
             using (var reader = new StreamReader(filePath))
             {
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))

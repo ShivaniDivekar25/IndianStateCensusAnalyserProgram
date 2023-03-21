@@ -11,6 +11,7 @@ namespace IndianStateCensusTest
         public static string stateCodePath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\Files\StateCode.csv";
         public static string incorrectStateCodePath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\Files\StatesCode.csv";
         public static string incorrectSCodeFilePath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\Files\StateCode.txt";
+        public static string incorrectSCodeDelimeterPath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\Files\StateCodeDelimeter.csv";
         StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
         CsvStateCensus csvState = new CsvStateCensus();
         StateCodeAnalyser stateCodeAnalyser = new StateCodeAnalyser();
@@ -96,6 +97,18 @@ namespace IndianStateCensusTest
             catch (IndianStateCensusException ex)
             {
                 Assert.AreEqual(ex.Message, "Incorrect state code file type");
+            }
+        }
+        [Test]
+        public void GivenIncorrectStateCodeFileDelimeter_ShouldReturnCustomException()
+        {
+            try
+            {
+                int record = stateCodeAnalyser.ReadStateCodeData(incorrectSCodeDelimeterPath);
+            }
+            catch (IndianStateCensusException ex)
+            {
+                Assert.AreEqual(ex.Message, "Incorrect state code delimeter");
             }
         }
     }
