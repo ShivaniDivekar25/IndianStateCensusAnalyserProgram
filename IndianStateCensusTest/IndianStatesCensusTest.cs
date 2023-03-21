@@ -7,6 +7,7 @@ namespace IndianStateCensusTest
         public static string path = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\Files\StateCensusData.csv";
         public static string incorrectStatePath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\File\StateCensusData.csv";
         public static string incorrectStateFilePath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\Files\StateCensusData.txt";
+        public static string incorrectDelimeterPath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\Files\StateCensusDelimeter.csv";
         StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
         CsvStateCensus csvState = new CsvStateCensus();
         [Test]
@@ -36,6 +37,18 @@ namespace IndianStateCensusTest
             catch (IndianStateCensusException ex)
             {
                 Assert.AreEqual(ex.Message, "File type is incorrect");
+            }
+        }
+        [Test]
+        public void GivenIncorrectFileDelimeter_ShouldReturnCustomException()
+        {
+            try
+            {
+                int record = stateCensusAnalyser.ReadStateCensusData(incorrectDelimeterPath);
+            }
+            catch (IndianStateCensusException ex)
+            {
+                Assert.AreEqual(ex.Message, "Delimeter is incorrect");
             }
         }
     }
