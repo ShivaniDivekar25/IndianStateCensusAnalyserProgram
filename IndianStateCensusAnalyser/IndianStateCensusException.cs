@@ -12,7 +12,8 @@ namespace IndianStateCensusAnalyser
         {
             CSV_FILE_IS_INCORRECT,
             FILE_TYPE_INCORRECT,
-            INCORRECT_DELIMETER
+            INCORRECT_DELIMETER,
+            INCORRECT_HEADER
         }
         public IndianStateExceptionType indianStateExceptionType;
         public IndianStateCensusException(IndianStateExceptionType indianStateExceptionType, string message) : base(message)

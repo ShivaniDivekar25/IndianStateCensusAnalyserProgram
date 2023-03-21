@@ -40,5 +40,14 @@ namespace IndianStateCensusAnalyser
                 }
             }
         }
+        public bool ReadStateCensusData(string filePath, string actualHeader)
+        {
+            var csvReader = File.ReadAllLines(filePath);
+            string header = csvReader[0];
+            if (header.Equals(actualHeader))
+                return true;
+            else
+                throw new IndianStateCensusException(IndianStateCensusException.IndianStateExceptionType.INCORRECT_HEADER, "Header is incorrect");
+        }
     }
 }
