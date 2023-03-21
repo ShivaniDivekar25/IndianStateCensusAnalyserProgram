@@ -111,5 +111,18 @@ namespace IndianStateCensusTest
                 Assert.AreEqual(ex.Message, "Incorrect state code delimeter");
             }
         }
+        [Test]
+        public void GivenIncorrectStateCodeHeader_ShouldReturnCustomException()
+        {
+            try
+            {
+                bool record = stateCodeAnalyser.ReadStateCodeData(path, "SrNo,Name,TIN,StateCode,");
+                Assert.IsTrue(record);
+            }
+            catch (IndianStateCensusException ex)
+            {
+                Assert.AreEqual(ex.Message, "State code header is incorrect");
+            }
+        }
     }
 }

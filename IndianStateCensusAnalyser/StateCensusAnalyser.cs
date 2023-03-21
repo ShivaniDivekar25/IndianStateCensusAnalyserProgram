@@ -40,7 +40,7 @@ namespace IndianStateCensusAnalyser
                 }
             }
         }
-         public bool ReadStateCensusData(string filePath,string actualHeader)
+        public bool ReadStateCensusData(string filePath,string actualHeader)
         {
             var csvReader = File.ReadAllLines(filePath);
             string header = csvReader[0];
