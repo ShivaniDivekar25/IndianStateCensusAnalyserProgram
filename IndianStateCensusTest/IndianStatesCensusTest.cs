@@ -8,8 +8,11 @@ namespace IndianStateCensusTest
         public static string incorrectStatePath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\File\StateCensusData.csv";
         public static string incorrectStateFilePath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\Files\StateCensusData.txt";
         public static string incorrectDelimeterPath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\Files\StateCensusDelimeter.csv";
+        public static string stateCodePath = @"C:\Users\hp\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\Files\StateCode.csv";
         StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
         CsvStateCensus csvState = new CsvStateCensus();
+        StateCodeAnalyser stateCodeAnalyser = new StateCodeAnalyser();
+        CsvStateCode csvStateCode = new CsvStateCode();
         [Test]
         public void GivenStateCensusData_ShouldMatchNumbersOfRetrunMatches()
         {
@@ -63,6 +66,11 @@ namespace IndianStateCensusTest
             {
                 Assert.AreEqual(ex.Message, "Header is incorrect");
             }
+        }
+        [Test]
+        public void GivenStateCodeData_ShouldMatchNumbersOfRetrunMatches()
+        {
+            Assert.AreEqual(stateCodeAnalyser.ReadStateCodeData(stateCodePath), csvStateCode.ReadStateCodeData(stateCodePath));
         }
     }
 }

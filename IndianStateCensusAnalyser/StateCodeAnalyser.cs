@@ -5,11 +5,10 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace IndianStateCensusAnalyser
 {
-    public class CsvStateCode
+    public class StateCodeAnalyser
     {
         public int ReadStateCodeData(string filePath)
         {
@@ -23,7 +22,7 @@ namespace IndianStateCensusAnalyser
                         //Console.WriteLine($"{record.SrNo} {record.Name} {record.TIN} {record.StateCode}");
                         Console.WriteLine(record);
                     }
-                    return records.Count - 1;
+                    return records.Count() - 1;
                 }
             }
         }
